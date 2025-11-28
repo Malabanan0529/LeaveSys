@@ -1,39 +1,49 @@
-# LeaveSys - Online Employee Leave Management System (OELMS) 
-This Online Employee Leave Management System (OELMS) is a full-stack web application designed to handle all employee time-off requests. It was built using the Fat-Free (F3) Framework for efficient performance and deployment, utilizing a MySQL database and various supporting libraries.
+# Online Employee Leave Management System (OELMS)
 
-# Team Developer: Malabanan, Mark Kevin D. 
-# Design Analytics: Abelong, Mark Jayson S. 
-# Document Analytics: David, Lance Angle N. 
+The **Online Employee Leave Management System (OELMS)** is a full-stack web application designed to streamline and handle employee time-off requests. It is built using the **Fat-Free (F3) Framework** for efficient performance, utilizing a MySQL database and various supporting libraries.
 
-# Section: BSIT 3-B 
-# Subject: SAD-101
+---
 
-# Deployed Live System: `http://leavesys.x10.mx`
+### Project Information
 
+* **Subject:** SAD-101 (BSIT 3-B)
+* **Deployed Live System:** [http://leavesys.x10.mx](http://leavesys.x10.mx)
 
-# - Installation Guide
+### Development Team
+* **Lead Developer:** Malabanan, Mark Kevin D.
+* **System Designer:** Abelong, Mark Jayson S.
+* **Technical Writer:** David, Lance Angle N.
 
-This system is built using the **Fat-Free Framework (F3)**. Follow the steps below to configure your XAMPP environment, set up the database, and run the application using a local domain (`employee.local`).
+---
+
+# Installation Guide
+
+Follow the steps below to configure your XAMPP environment, set up the database, and run the application using a local domain (`employee.local`).
+
+## Prerequisites
+* **XAMPP** (Apache & MySQL)
+* **Web Browser** (Chrome, Firefox, or Edge)
+* **Text Editor** (VS Code, Notepad++, or Notepad)
 
 ---
 
 ## 1. Project Directory Setup
 
-1.  Locate your XAMPP installation directory (e.g., `C:\Users\XAMPP`).
+1.  Locate your XAMPP installation directory (Default is usually `C:\xampp`).
 2.  Navigate to the `htdocs` folder.
 3.  Create a folder named **`Employee_System`**.
-4.  Extract all project files into this folder:
+4.  Extract all project files into this folder so the path looks like this:
     ```
-    C:\Users\XAMPP\htdocs\Employee_System\
+    C:\xampp\htdocs\Employee_System\
     ```
-5.  **Important:** Ensure the Fat-Free Framework core files are present. You should have a `lib/` folder containing `base.php` inside the `Employee_System` directory.
+5.  **Important:** Ensure the Fat-Free Framework core files are present. You must have a `lib/` folder containing `base.php` inside the `Employee_System` directory.
 
 ---
 
 ## 2. Database Configuration
 
 1.  Start the **Apache** and **MySQL** modules in your XAMPP Control Panel.
-2.  Open your browser and go to [http://localhost/phpmyadmin](e.g., http://192.168.0.100/phpmyadmin).
+2.  Open your browser and navigate to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 3.  Click **New** to create a database.
 4.  Name the database:
     ```
@@ -41,39 +51,54 @@ This system is built using the **Fat-Free Framework (F3)**. Follow the steps bel
     ```
 5.  Select the newly created database.
 6.  Click the **Import** tab.
-7.  Choose the `leave_system_db.sql` file included in this project.
-8.  Click **Import** at the bottom to create the tables and seed default users.
+7.  Choose the `leave_system_db.sql` file included in this project folder.
+8.  Click **Import** to create the tables and seed the default users.
 
 ---
 
-## 3. Apache Virtual Host Setup
+## 3. Application Connection Setup
 
-You need to tell Apache to recognize the specific local domain and point it to your project folder.
+You must ensure the application can talk to your database.
+
+1.  Navigate to the project configuration file:
+    ```
+    Employee_System/app/config/config.ini
+    ```
+2.  Open `config.ini` in your text editor.
+3.  Locate the database settings. Update the **username** and **password** to match your XAMPP MySQL settings.
+    * *Note: Default XAMPP installs usually have user `root` and an empty password.*
+    * **If the application requires a password:** You may need to set a password for your root user in phpMyAdmin or create a new user matching the credentials in `config.ini`.
+
+---
+
+## 4. Apache Virtual Host Setup
+
+This step configures Apache to recognize the custom domain.
 
 1.  Navigate to your Apache configuration directory:
     ```
-    C:\Users\XAMPP\apache\conf\extra\
+    C:\xampp\apache\conf\extra\
     ```
-2.  Open the file **`httpd-vhosts.conf`** in a text editor (Notepad, VS Code, etc.).
+2.  Open the file **`httpd-vhosts.conf`** in a text editor.
 3.  Add the following configuration to the very bottom of the file:
 
     ```apache
     <VirtualHost *:80>
-        DocumentRoot "C:/Users/XAMPP/htdocs/Employee_System"
+        DocumentRoot "C:/xampp/htdocs/Employee_System"
         ServerName employee.local
-        <Directory "C:/Users/XAMPP/htdocs/Employee_System">
+        <Directory "C:/xampp/htdocs/Employee_System">
             Require all granted
             AllowOverride All  
         </Directory>
     </VirtualHost>
     ```
-4.  Save and close the file.
+    *(Note: If you installed XAMPP in a different location, adjust the paths above accordingly)*.
 
 ---
 
-## 4. Windows Hosts File Configuration
+## 5. Windows Hosts File Configuration
 
-You need to map the custom domain to your local machine (localhost).
+This step maps the custom domain to your local machine.
 
 1.  Open **Notepad** as **Administrator** (Right-click Notepad icon > Run as Administrator).
 2.  Open the following file:
@@ -84,17 +109,17 @@ You need to map the custom domain to your local machine (localhost).
     ```
     127.0.0.1       employee.local
     ```
-4.  Save the file (Ctrl+S) and close it.
+4.  Save the file (**Ctrl+S**) and close it.
 
 ---
 
-## 5. Enable Mod_Rewrite (Optional but Recommended)
+## 6. Enable Mod_Rewrite
 
 The Fat-Free Framework relies on URL routing. Ensure Apache's rewrite module is enabled.
 
-1.  Open `C:\Users\XAMPP\apache\conf\httpd.conf`.
+1.  Open `C:\xampp\apache\conf\httpd.conf`.
 2.  Search for `mod_rewrite.so`.
-3.  Ensure the line is **uncommented** (remove the `#` symbol if present):
+3.  Ensure the line is **uncommented** (remove the `#` symbol if present at the start of the line):
     ```apache
     LoadModule rewrite_module modules/mod_rewrite.so
     ```
@@ -102,18 +127,17 @@ The Fat-Free Framework relies on URL routing. Ensure Apache's rewrite module is 
 
 ---
 
-## 6. Final Step
+## 7. Run the System
 
-1.  **Restart Apache** in the XAMPP Control Panel (Stop, then Start) to apply the Virtual Host changes.
+1.  **Restart Apache** in the XAMPP Control Panel (Stop, then Start) to apply the Virtual Host and Config changes.
 2.  Open your web browser.
-3.  Access the system via:
-    [http://employee.local](e.g., http://192.168.0.100)
+3.  Access the system via: [http://employee.local](http://employee.local)
 
 ---
 
-## 7. Default Login Credentials
+## Default Login Credentials
 
-The database comes pre-seeded with the following accounts:
+The database is pre-seeded with the following accounts:
 
 | Role | Username | Password |
 | :--- | :--- | :--- |
@@ -127,6 +151,6 @@ The database comes pre-seeded with the following accounts:
 
 ## Troubleshooting
 
-* **"Access Forbidden" or 403 Error:** Ensure the `<Directory>` path in `httpd-vhosts.conf` matches your actual folder path exactly.
+* **"Access Forbidden" or 403 Error:** Ensure the `<Directory>` path in `httpd-vhosts.conf` matches your actual project folder path exactly.
 * **"Server Not Found":** Double-check that you saved the `hosts` file as Administrator and restarted your browser.
-* **Database Error:** Open `app/config/config.ini` and ensure the settings match your MySQL credentials (default XAMPP user is usually `root` with no password) create a password `root` or depending on your setup (This will not run without a MySQL user and password).
+* **Database Connection Error:** Double-check `app/config/config.ini`. The username and password there **must** match your local MySQL credentials.
