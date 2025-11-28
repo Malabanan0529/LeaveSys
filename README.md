@@ -1,6 +1,6 @@
-# Online Employee Leave Management System (OELMS)
+# LeaveSys - Online Employee Leave Management System (OELMS)
 
-The **Online Employee Leave Management System (OELMS)** is a full-stack web application designed to streamline and handle employee time-off requests. It is built using the **Fat-Free (F3) Framework** for efficient performance, utilizing a MySQL database and various supporting libraries.
+**LeaveSys** a **Online Employee Leave Management System (OELMS)** is a full-stack web application designed to streamline and handle employee time-off requests. It is built using the **Fat-Free (F3) Framework** for efficient performance, utilizing a MySQL database and various supporting libraries.
 
 ---
 
