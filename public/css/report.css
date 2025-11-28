@@ -1,0 +1,32 @@
+body { font-family: 'Inter', sans-serif; }
+        
+@media print {
+    body { 
+        background-color: white !important; 
+        color: black !important; 
+        padding: 0 !important;
+    }
+    .no-print { display: none !important; }
+    .glass-panel { 
+        background: none !important; 
+        border: none !important; 
+        box-shadow: none !important; 
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    table { width: 100% !important; border: 1px solid #ddd !important; }
+    th { 
+        background-color: #f3f4f6 !important; 
+        color: black !important; 
+        border-bottom: 2px solid #000 !important;
+    }
+    td { 
+        border-bottom: 1px solid #ddd !important; 
+        color: black !important;
+    }
+    span.badge { 
+        border: 1px solid #000 !important; 
+        color: #000 !important; 
+        background: none !important; 
+    }
+}

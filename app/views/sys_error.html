@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ @page_title }}</title>
+    <!-- Matched Dashboard Assets -->
+    <script src="{{ @BASE }}/public/js/library/TailWind-3.4.17"></script>
+    <link href="{{ @BASE }}/public/css/fonts/css2.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/library/all.min.css">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/style.css">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/custom.css">
+</head>
+<body class="flex h-screen w-full overflow-hidden bg-zinc-950 text-zinc-100 antialiased selection:bg-white selection:text-zinc-950 flex-col items-center justify-center">
+
+    <div class="text-center space-y-8 max-w-xl px-6 w-full">
+        
+        <!-- Error Icon with Alert Pulse -->
+        <div class="w-24 h-24 bg-zinc-900 rounded-3xl border border-zinc-800 flex items-center justify-center mx-auto shadow-2xl shadow-black/50 relative overflow-hidden">
+            <div class="absolute inset-0 bg-red-500/10 animate-pulse"></div>
+            <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500/80"></i>
+        </div>
+        
+        <div class="space-y-3">
+            <h1 class="text-2xl font-bold text-white tracking-tight">{{ @page_title }}</h1>
+            <p class="text-zinc-500 text-sm">We encountered an unexpected issue.</p>
+        </div>
+
+        <!-- Technical Details Box (Matches Dashboard Table/Panel Style) -->
+        <div class="bg-black/40 border border-zinc-800/80 rounded-xl p-4 text-left shadow-inner max-h-48 overflow-y-auto custom-scrollbar">
+            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-zinc-800/50">
+                <i class="fa-solid fa-terminal text-xs text-zinc-600"></i>
+                <span class="text-[10px] uppercase font-bold text-zinc-600 tracking-wider">Error Log</span>
+            </div>
+            <code class="text-xs font-mono text-red-400 break-words whitespace-pre-wrap">{{ @error_message | esc }}</code>
+        </div>
+
+        <div class="flex justify-center gap-3 pt-2">
+            <a href="{{ @BASE }}/dashboard" class="px-6 py-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-800 font-medium rounded-lg transition-colors text-sm">
+                Dashboard
+            </a>
+            <button onclick="location.reload()" class="px-6 py-2.5 bg-white text-zinc-950 hover:bg-zinc-200 font-medium rounded-lg transition-colors text-sm flex items-center gap-2">
+                <i class="fa-solid fa-rotate-right"></i> Try Again
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

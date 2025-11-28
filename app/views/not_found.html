@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ @page_title }}</title>
+    <!-- Matched Dashboard Assets -->
+    <script src="{{ @BASE }}/public/js/library/TailWind-3.4.17"></script>
+    <link href="{{ @BASE }}/public/css/fonts/css2.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/library/all.min.css">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/style.css">
+    <link rel="stylesheet" href="{{ @BASE }}/public/css/custom.css">
+</head>
+<body class="flex h-screen w-full overflow-hidden bg-zinc-950 text-zinc-100 antialiased selection:bg-white selection:text-zinc-950 flex-col items-center justify-center">
+
+    <div class="text-center space-y-8 max-w-lg px-6 animate-fade-in-up">
+        <!-- Icon Container matching Dashboard Panels -->
+        <div class="w-24 h-24 bg-zinc-900 rounded-3xl border border-zinc-800 flex items-center justify-center mx-auto shadow-2xl shadow-black/50 relative group">
+            <div class="absolute inset-0 bg-zinc-800/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <i class="fa-solid fa-ghost text-4xl text-zinc-500 group-hover:text-zinc-300 transition-colors duration-300"></i>
+        </div>
+        
+        <div class="space-y-3">
+            <h1 class="text-6xl font-bold text-white tracking-tighter">404</h1>
+            <h2 class="text-xl font-medium text-zinc-300">Page Not Found</h2>
+            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs mx-auto">
+                The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            </p>
+        </div>
+
+        <div class="pt-2">
+            <a href="{{ @BASE }}/dashboard" class="inline-flex items-center gap-2 px-8 py-3 bg-white text-zinc-950 hover:bg-zinc-200 font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] text-sm">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <span>Return to Dashboard</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+body { font-family: 'Inter', sans-serif; }
+        
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* Glass/Panel Base Style */
+.panel { 
+    background-color: rgba(24, 24, 27, 0.6); /* zinc-900/60 */
+    border: 1px solid rgba(63, 63, 70, 0.4); /* zinc-700/40 */
+    backdrop-filter: blur(12px);
+}
+
+/* Sidebar Navigation Styles */
+.sidebar-link { 
+    border-left: 2px solid transparent; 
+    transition: all 0.2s ease; 
+    cursor: pointer; 
+    color: #a1a1aa; /* zinc-400 */
+}
+.sidebar-link.active { 
+    background-color: rgba(255, 255, 255, 0.03); 
+    color: #ffffff; 
+    border-left: 2px solid #ffffff; 
+}
+.sidebar-link:hover:not(.active) { 
+    color: #ffffff; 
+    background-color: rgba(255, 255, 255, 0.02); 
+}
+
+/* View Management */
+.view-section { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.view-section.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PREMIUM CALENDAR THEME --- */
+.fc { font-family: 'Inter', sans-serif; --fc-border-color: #27272a; --fc-page-bg-color: transparent; }
+
+/* Header & Toolbar */
+.fc-toolbar-title { font-size: 1.25rem !important; font-weight: 600; color: #fff; }
+.fc-button { 
+    background: #18181b !important; 
+    border: 1px solid #3f3f46 !important; 
+    color: #e4e4e7 !important; 
+    box-shadow: none !important; 
+    font-size: 0.8rem !important; 
+    font-weight: 500 !important; 
+    text-transform: capitalize; 
+    border-radius: 0.5rem !important; 
+    padding: 8px 14px !important; 
+}
+.fc-button:hover, .fc-button-active { 
+    background: #27272a !important; 
+    border-color: #52525b !important; 
+    color: white !important; 
+}
+
+/* Month View Cells */
+.fc-daygrid-day-number { color: #a1a1aa; padding: 8px; text-decoration: none !important; font-size: 0.9rem; }
+.fc-col-header-cell { padding: 12px 0; background: #18181b; border: none !important; color: #71717a; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; font-weight: 600; }
+.fc-day-today { background: rgba(255, 255, 255, 0.02) !important; }
+.fc-theme-standard td, .fc-theme-standard th { border-color: #27272a !important; }
+
+/* --- PREMIUM LIST VIEW OVERRIDES --- */
+.fc-list { border: none !important; }
+.fc-list-table { border-collapse: separate !important; border-spacing: 0 8px !important; }
+
+/* Day Header (Transparent floating header) */
+.fc-list-day-cushion { 
+    background: transparent !important; 
+    border: none !important; 
+    padding: 20px 0 8px 0 !important;
+}
+.fc-list-day-text { font-size: 1rem !important; color: #fff !important; font-weight: 600 !important; }
+.fc-list-day-side-text { font-size: 1rem !important; color: #71717a !important; font-weight: 500 !important; }
+
+/* Event Row (Card Style) */
+.fc-list-event td {
+    background-color: rgba(24, 24, 27, 0.4) !important; /* zinc-900/40 */
+    border: 1px solid rgba(63, 63, 70, 0.3) !important; /* zinc-700/30 */
+    border-style: solid none solid none !important;
+    transition: all 0.2s ease;
+}
+
+/* Rounded Corners for Card Effect */
+.fc-list-event td:first-child { 
+    border-left-style: solid !important; 
+    border-top-left-radius: 12px; 
+    border-bottom-left-radius: 12px; 
+}
+.fc-list-event td:last-child { 
+    border-right-style: solid !important; 
+    border-top-right-radius: 12px; 
+    border-bottom-right-radius: 12px; 
+}
+
+/* Hover Effect */
+.fc-list-event:hover td {
+    background-color: rgba(39, 39, 42, 0.8) !important; /* zinc-800/80 */
+    border-color: rgba(161, 161, 170, 0.2) !important;
+    cursor: pointer;
+}
+
+/* Hide Default Elements */
+.fc-list-event-graphic { display: none !important; } /* Hide default dot */
+
+/* Time Column Styling */
+.fc-list-event-time { 
+    color: #a1a1aa !important; 
+    font-family: 'Inter', monospace; 
+    font-size: 0.85rem !important; 
+    padding-left: 20px !important; 
+    width: 90px;
+    white-space: nowrap;
+}
+.fc-list-event-title { padding-right: 20px !important; }
+
+/* Mobile Overlay */
+#mobileOverlay { transition: opacity 0.3s ease; }
+#mobileOverlay.hidden { pointer-events: none; opacity: 0; }
+#mobileOverlay:not(.hidden) { opacity: 1; pointer-events: auto; }
+
+/* --- MOBILE CALENDAR SPECIFIC FIXES --- */
+@media (max-width: 640px) {
+    /* Stack toolbar elements vertically */
+    .fc-header-toolbar {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Make chunks (left/center/right) span full width */
+    .fc-toolbar-chunk {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Center the title and ensure it wraps if needed */
+    .fc-toolbar-title {
+        font-size: 1.1rem !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Make buttons bigger/easier to tap and spread them out */
+    .fc-button-group {
+        width: 100%;
+        display: flex;
+    }
+    .fc-button {
+        flex-grow: 1;
+        justify-content: center;
+        padding: 10px 0 !important;
+    }
+
+    /* Adjust List View Spacing for Mobile */
+    .fc-list-table {
+        border-spacing: 0 6px !important;
+    }
+    .fc-list-day-cushion {
+        padding: 12px 0 4px 0 !important;
+    }
+    .fc-list-day-text { font-size: 0.9rem !important; }
+    .fc-list-day-side-text { font-size: 0.8rem !important; }
+    
+    /* Compact the event card on mobile */
+    .fc-list-event td {
+        padding: 10px 12px !important;
+    }
+    
+    /* Allow time to stack or wrap if needed, though we keep it hidden/compact usually */
+    .fc-list-event-time {
+        padding-left: 0 !important;
+        width: auto !important;
+        font-size: 0.75rem !important;
+        display: block; 
+        margin-bottom: 2px;
+    }
+    .fc-list-event-title {
+        padding-right: 0 !important;
+    }
+}
